@@ -10,7 +10,7 @@ import static java.util.Map.Entry;
  *  2) using bulk operation
  *
  */
-public class SimpleMap {
+public class BaseOfMapAndCollections {
 
     public static void main(String[] args) {
 //        checkNewAttributeMap();
