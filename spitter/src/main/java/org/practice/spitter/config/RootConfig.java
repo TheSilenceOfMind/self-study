@@ -1,5 +1,6 @@
 package org.practice.spitter.config;
 
+import org.practice.spitter.Spitter;
 import org.practice.spitter.Spittle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,9 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Configuration
 @ComponentScan(
@@ -18,6 +17,7 @@ import java.util.List;
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)
         })
 public class RootConfig {
+
     @Bean
     public List<Spittle> getDefaultSpittleList() {
         List<Spittle> ret = new ArrayList<>();
@@ -27,5 +27,13 @@ public class RootConfig {
             ret.add(new Spittle(s, new Date()));
         }
         return ret;
+    }
+
+    @Bean
+    public Set<Spitter> getDefaultSpittersSet() {
+        return new HashSet<>(Arrays.asList(
+                new Spitter("Kirill", "Balad", "user0", "passwd"),
+                new Spitter("John", "Johnson", "user1", "passwd")
+        ));
     }
 }
