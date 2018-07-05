@@ -13,4 +13,12 @@ public interface SpittleRepository {
      * @return unordered list of spittles
      */
     List<Spittle> findSpittles(long max, int count);
+
+    /**
+     * Get Spittle with specified id
+     *
+     * @param id specified id of the Spittle
+     * @return Spittle object with given id. If no object found return null.
+     */
+    Spittle findOne(long id);
 }

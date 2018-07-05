@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.util.Date;
 
 /**
- * Entity of user, where all info stored
+ * Entity to store information about "post".
  */
 public class Spittle {
     private final Long id;

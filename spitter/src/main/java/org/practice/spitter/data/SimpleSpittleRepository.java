@@ -24,6 +24,14 @@ public class SimpleSpittleRepository implements SpittleRepository {
         return foundList;
     }
 
+    @Override
+    public Spittle findOne(long id) {
+        for (Spittle spittle : list)
+            if (spittle.getId() == id)
+                return spittle;
+        return null;
+    }
+
     public List<Spittle> getList() {
         return list;
     }
