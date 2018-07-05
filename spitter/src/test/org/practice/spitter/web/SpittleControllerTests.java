@@ -1,14 +1,6 @@
 package org.practice.spitter.web;
 
 import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-
 import org.practice.spitter.Spittle;
 import org.practice.spitter.data.SpittleRepository;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,14 +10,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ControllerTests {
-    @Test
-    public void testHomePage() throws Exception {
-        HomeController controller = new HomeController();
-        MockMvc mockMvc = standaloneSetup(controller).build();
-        mockMvc.perform(get("/"))
-                .andExpect(view().name("home"));
-    }
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+
+public class SpittleControllerTests {
 
     @Test
     public void shouldShowRecentSpittles() throws Exception {
@@ -79,9 +72,10 @@ public class ControllerTests {
 
     private List<Spittle> createSpittlesList(int count) {
         List<Spittle> spittles = new ArrayList<>();
-        for (int i=0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             spittles.add(new Spittle("Spittle " + i, new Date()));
         }
         return spittles;
     }
+
 }
