@@ -182,5 +182,16 @@
             <version>2.0.1.Final</version>
         </dependency>
 
+        <!-- This fucking dependency is THE MOST IMPORTANT in your validation phase. If you don't include that
+        realisation in your war, web-container don't expose to you the error (that you don't have concrete realisation
+        in your project). And as you can guess your project would work correctly and won't throw any Exception. But
+        the validation is simply skipped with no errors in Errors object while handling POST-request. Be aware! Don't
+        be such inaccurate asshole as me. -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.0.1.Final</version>
+        </dependency>
+
     </dependencies>
 </project>

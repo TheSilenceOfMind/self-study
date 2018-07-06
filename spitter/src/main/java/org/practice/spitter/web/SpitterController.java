@@ -34,7 +34,6 @@ public class SpitterController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String processRegistration(@Valid Spitter spitter, Errors errors) {
-        // FIXME: fix the bug with @Size and @Valid : if value of bounded field isn't valid, should return to "register form view. But the validation don't work correctly.
         if (errors.hasErrors()) {
             return "registerForm";
         }
