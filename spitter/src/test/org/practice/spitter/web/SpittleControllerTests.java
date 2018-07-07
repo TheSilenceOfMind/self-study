@@ -32,7 +32,7 @@ public class SpittleControllerTests {
                 .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
                 .build();
         mockMvc.perform(get("/spittles"))
-                .andExpect(view().name("spittles"))
+                .andExpect(view().name("spittles.recent"))
                 .andExpect(model().attributeExists("spittleList"))
                 .andExpect(model().attribute("spittleList", hasItems(expectedSpittles.toArray())));
     }
@@ -50,7 +50,7 @@ public class SpittleControllerTests {
                 .build();
 
         mockMvc.perform(get("/spittles?max=238900&count=50"))
-                .andExpect(view().name("spittles"))
+                .andExpect(view().name("spittles.recent"))
                 .andExpect(model().attributeExists("spittleList"))
                 .andExpect(model().attribute("spittleList", hasItems(expectedList.toArray())));
     }
