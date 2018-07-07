@@ -37,9 +37,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     // used to set resources location
     @Bean
     public MessageSource messageSource() {
-//        Locale.setDefault(new Locale("ru")); // to test russian property localisation
+        Locale.setDefault(new Locale("ru")); // to test russian property localisation
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-        source.setBasename("registrationValidationMessages");
+        source.setBasenames("registrationValidationMessages", "messages");
         return source;
     }
 
