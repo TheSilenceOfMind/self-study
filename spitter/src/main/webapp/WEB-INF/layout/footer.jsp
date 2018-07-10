@@ -1,0 +1,1 @@
+Copyright &copy; github.com/TheSilenceOfMind

@@ -11,7 +11,8 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import java.util.Locale;
 
@@ -22,11 +23,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
-        resolver.setExposeContextBeansAsAttributes(true);
-        return resolver;
+        return new TilesViewResolver();
     }
 
     @Override
@@ -37,7 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     // used to set resources location
     @Bean
     public MessageSource messageSource() {
-        Locale.setDefault(new Locale("ru")); // to test russian property localisation
+//        Locale.setDefault(new Locale("ru")); // to test russian property localisation
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setBasenames("registrationValidationMessages", "messages");
         return source;
@@ -50,4 +47,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         validator.setValidationMessageSource(messageSource());
         return validator;
     }
+
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tiles = new TilesConfigurer();
+        tiles.setDefinitions(
+                "/WEB-INF/layout/tiles.xml",
+                "/WEB-INF/**/tiles.xml"
+        );
+        tiles.setCheckRefresh(true);
+        return tiles;
+    }
+
 }
