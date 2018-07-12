@@ -22,6 +22,10 @@ public class RootConfig {
     public List<Spittle> getDefaultSpittleList() {
         List<Spittle> ret = new ArrayList<>();
         String[] list = {"Spittes go fourth!", "second message text!", "hey, spitters!", "4-th spitter",
+                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
+                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
+                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
+                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
                 "WHAT'S GOING ON?!"};
         for (String s : list) {
             ret.add(new Spittle(s, new Date()));

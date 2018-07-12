@@ -9,22 +9,24 @@
           href="<c:url value="/resources/style.css" />"/>
 </head>
 <body>
-<h1><s:message code="spittles.recent"/>:</h1>
-<ul>
-    <c:forEach items="${spittleList}" var="spittle">
-        <li id="spittle_<c:out value="${spittle.id}"/>">
-            <div class="spittleMessage">
-                <c:out value="${spittle.message}"/>
-            </div>
-            <div>
-                <span class="spittleTime"><c:out value="${spittle.time}"/></span>
-                <span class="spittleLocation">
+<div class="spittleList">
+    <ul>
+        <h1><s:message code="spittles.recent"/>:</h1>
+        <c:forEach items="${spittleList}" var="spittle">
+            <li id="spittle_<c:out value="${spittle.id}"/>">
+                <div class="spittleMessage">
+                    <c:out value="${spittle.message}"/>
+                </div>
+                <div>
+                    <span class="spittleTime"><c:out value="${spittle.time}"/></span>
+                    <span class="spittleLocation">
 (<c:out value="${spittle.latitude}"/>,
 <c:out value="${spittle.longitude}"/>)
             </span>
-            </div>
-        </li>
-    </c:forEach>
-</ul>
+                </div>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 </body>
 </html>

@@ -1,5 +1,16 @@
 body {
-    font-family: sans-serif;
+    background: #FFFFFF;
+    color: #07214a;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    margin: 0 1px;
 }
 
 .spittleList h1 {
@@ -17,20 +28,42 @@ body {
 }
 
 .spittleList ul li {
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #cc0500;
+    list-style-position: inside;
 }
 
 .spittleTime {
-    font-size: 8pt;
+    font-size: 0.75em;
 }
 
 .spittleLocation {
-    font-size: 8pt;
+    font-size: 0.75em;
 }
 
-.spittleForm h1 {
-    font-size: 16pt;
+form * {
+    margin: 0.5%;
 }
+
+.logo {
+    height: 60px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #d6d6d6;
+    text-align: center;
+    padding: 3px;
+}
+
+/*-------------------------for layout-----------------------------------*/
+#content {
+    padding-bottom: 26px;
+}
+
+/*-------------------------errors---------------------------------------*/
 
 span.error {
     color: red;
