@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="header">
+    <a th:href="@{/}">
+        <img th:src="@{/resources/images/spitter_logo.png}" class="logo"/>
+    </a>
+</div>
+
+<div>There's might be your content.</div>
+
+<!-- You can't place there tag class and simply include this fragment: the class will disappear! -->
+<div th:fragment="copy">
+    Copyright &copy; <a href="https://github.com/TheSilenceOfMind">Balad Kirill</a>
+</div>
+
+</body>
+</html>
