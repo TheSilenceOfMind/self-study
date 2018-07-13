@@ -13,10 +13,6 @@ body {
     margin: 0 1px;
 }
 
-.spittleList h1 {
-    font-size: 16pt;
-}
-
 .spittleList ul {
     list-style: none;
     margin-left: 0;
@@ -80,4 +76,10 @@ label.error {
 
 input.error {
     background-color: #ffcccc;
+}
+
+.errors ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
 }
