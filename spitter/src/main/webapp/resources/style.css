@@ -13,26 +13,26 @@ body {
     margin: 0 1px;
 }
 
-.spittleList ul {
+.spittles__list ul {
     list-style: none;
     margin-left: 0;
     padding-left: 0;
 }
 
-.spittleList ul li:first-child {
+.spittles__list ul li:first-child {
     border-top: 0;
 }
 
-.spittleList ul li {
+.spittles__list ul li {
     border-top: 1px solid #cc0500;
     list-style-position: inside;
 }
 
-.spittleTime {
+.spittle__time--font {
     font-size: 0.75em;
 }
 
-.spittleLocation {
+.spittle__location--font {
     font-size: 0.75em;
 }
 

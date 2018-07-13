@@ -10,15 +10,15 @@
 <div id="header" th:include="page :: header"></div>
 
 <div id="content">
-    <div class="spittleList">
+    <div class="spittles__list">
         <h1 th:text="#{spittles.recent}"></h1>
         <ul>
             <li th:each="spittle : ${spittleList}"
                 th:id="'spittle_' + ${spittle.id}">
-                <div class="spittleMessage" th:text="${spittle.message}">Spittle message</div>
+                <div class="spittle__message" th:text="${spittle.message}">Spittle message</div>
                 <div>
-                    <span class="spittleTime" th:text="${spittle.time}">spittle timestamp</span>
-                    <span class="spittleLocation" th:text="'{' + ${spittle.latitude} + ', ' + ${spittle.longitude} + ')'">lat, long</span>
+                    <span class="spittle__time--font" th:text="${spittle.time}">spittle timestamp</span>
+                    <span class="spittle__location--font" th:text="'{' + ${spittle.latitude} + ', ' + ${spittle.longitude} + ')'">lat, long</span>
                 </div>
             </li>
         </ul>
