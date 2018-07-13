@@ -27,8 +27,10 @@ public class SpitterControllerTests {
     @Test
     public void shouldProcessForm() throws Exception {
         SpitterRepository mockRepository = mock(SpitterRepository.class);
-        Spitter unsaved = new Spitter("Jack", "Garrison", "jacky", "qwerty");
-        Spitter saved = new Spitter(1L, "Jack", "Garrison", "jacky", "qwerty");
+        Spitter unsaved = new Spitter("Jack", "Garrison", "jacky", "qwerty",
+                "jacky@mail.ru");
+        Spitter saved = new Spitter(1L, "Jack", "Garrison", "jacky", "qwerty",
+                "jacky@mail.ru");
         when(mockRepository.save(unsaved)).thenReturn(saved);
 
         SpitterController controller = new SpitterController(mockRepository);
@@ -38,7 +40,8 @@ public class SpitterControllerTests {
                 .param("firstName", "Jack")
                 .param("lastName", "Garrison")
                 .param("username", "jacky")
-                .param("password", "qwerty"))
+                .param("password", "qwerty")
+                .param("email", "jacky@mail.ru"))
                 .andExpect(redirectedUrl("/spitter/jacky"));
 
         verify(mockRepository, atLeastOnce()).save(unsaved);

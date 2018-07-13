@@ -36,8 +36,10 @@ public class RootConfig {
     @Bean
     public Set<Spitter> getDefaultSpittersSet() {
         return new HashSet<>(Arrays.asList(
-                new Spitter("Kirill", "Balad", "user0", "passwd"),
-                new Spitter("John", "Johnson", "user1", "passwd")
+                new Spitter("Kirill", "Balad", "user0", "passwd",
+                        "user0@mail.ru"),
+                new Spitter("John", "Johnson", "user1", "passwd",
+                        "user1@mail.ru")
         ));
     }
 }
