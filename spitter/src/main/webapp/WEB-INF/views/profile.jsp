@@ -8,7 +8,7 @@
 <body>
 <h1><s:message code="profile.yourProfile" /></h1>
 <c:out value="${spitter.username}"/><br/>
-<c:out value="${spitter.firstName}"/>
-<c:out value="${spitter.lastName}"/>
+<c:out value="${spitter.firstName}"/> <c:out value="${spitter.lastName}"/><br/>
+<c:out value="${spitter.email}"/>
 </body>
 </html>

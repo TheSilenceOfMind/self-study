@@ -2,6 +2,7 @@ package org.practice.spitter;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.context.annotation.PropertySource;
 
 import javax.validation.constraints.NotNull;
@@ -30,19 +31,25 @@ public class Spitter {
     @Size(min = 2, max = 30, message = "{lastName.size}")
     private String lastName;
 
+    @NotNull
+    @SuppressWarnings("deprecation")
+    @Email(message="{email}")
+    private String email;
+
     public Spitter() {
     }
 
-    public Spitter(String firstName, String lastName, String username, String password) {
-        this(null, firstName, lastName, username, password);
+    public Spitter(String firstName, String lastName, String username, String password, String email) {
+        this(null, firstName, lastName, username, password, email);
     }
 
-    public Spitter(Long id, String firstName, String lastName, String username, String password) {
+    public Spitter(Long id, String firstName, String lastName, String username, String password, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     public Spitter(Long id, Spitter spitter) {
@@ -51,6 +58,7 @@ public class Spitter {
         this.lastName = spitter.lastName;
         this.password = spitter.password;
         this.username = spitter.username;
+        this.email = spitter.email;
     }
 
     public String getUsername() {
@@ -85,19 +93,28 @@ public class Spitter {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        Spitter spitter = (Spitter) o;
+        Spitter anotherSpitter = (Spitter) o;
 
         return new EqualsBuilder()
-                .append(username, spitter.username)
-                .append(password, spitter.password)
-                .append(firstName, spitter.firstName)
-                .append(lastName, spitter.lastName)
+                .append(username, anotherSpitter.username)
+                .append(password, anotherSpitter.password)
+                .append(firstName, anotherSpitter.firstName)
+                .append(lastName, anotherSpitter.lastName)
+                .append(email, anotherSpitter.email)
                 .isEquals();
     }
 
@@ -108,6 +125,7 @@ public class Spitter {
                 .append(password)
                 .append(firstName)
                 .append(lastName)
+                .append(email)
                 .toHashCode();
     }
 }

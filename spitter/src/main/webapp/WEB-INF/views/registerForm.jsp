@@ -35,6 +35,11 @@
     </sf:label>:
     <sf:input path="username" cssErrorClass="error"/><br/>
 
+    <sf:label path="email" cssErrorClass="error">
+        <s:message code="register.email"/>
+    </sf:label>:
+    <sf:input path="email" cssErrorClass="error"/><br/>
+
     <sf:label path="password" cssErrorClass="error">
         <s:message code="register.password"/>
     </sf:label>:
