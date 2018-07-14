@@ -12,7 +12,7 @@
 <div id="content">
     <h1 th:text="#{register.register}"></h1>
 
-    <form method="POST" th:object="${spitter}">
+    <form method="POST" th:object="${spitterForm}">
         <div class="errors" th:if="${#fields.hasErrors('*')}">
             <ul>
                 <li th:each="err : ${#fields.errors('*')}"

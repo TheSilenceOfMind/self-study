@@ -5,8 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -21,6 +23,7 @@ import org.thymeleaf.spring3.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
+import java.io.IOException;
 import java.util.Locale;
 
 @Configuration
@@ -92,4 +95,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(localeChangeInterceptor());
     }
 
+    @Bean(name="multipartResolver")
+    public CommonsMultipartResolver getResolver() throws IOException {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+
+        resolver.setMaxUploadSizePerFile(5242880);//5MB
+        resolver.setUploadTempDir(new FileSystemResource(
+                "D:\\OneDrive - ITMO UNIVERSITY\\JavaPractice\\siteData"));
+        resolver.setMaxInMemorySize(0);
+
+        return resolver;
+    }
 }

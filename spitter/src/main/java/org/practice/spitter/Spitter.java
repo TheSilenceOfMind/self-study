@@ -128,4 +128,16 @@ public class Spitter {
                 .append(email)
                 .toHashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Spitter{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
