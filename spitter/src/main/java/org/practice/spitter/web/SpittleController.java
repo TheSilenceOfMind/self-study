@@ -41,10 +41,4 @@ public class SpittleController {
         model.addAttribute(spittle);
         return "spittle";
     }
-
-    @ExceptionHandler(SpittleNotFoundException.class)
-    public String handleSpittleNotFoundException() {
-        return "error/spittle_not_found";
-    }
-
 }
