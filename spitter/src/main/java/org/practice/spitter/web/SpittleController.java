@@ -2,14 +2,13 @@ package org.practice.spitter.web;
 
 import org.practice.spitter.Spittle;
 import org.practice.spitter.data.SpittleRepository;
+import org.practice.spitter.web.exception.SpittleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -24,18 +23,28 @@ public class SpittleController {
         this.spittleRepository = spittleRepository;
     }
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public List<Spittle> spittles(
-            @RequestParam(value="max", defaultValue = MAX_LONG_AS_STRING) long max,
-            @RequestParam(value="count", defaultValue = "20") int count) {
+            @RequestParam(value = "max", defaultValue = MAX_LONG_AS_STRING) long max,
+            @RequestParam(value = "count", defaultValue = "20") int count) {
 
         return spittleRepository.findSpittles(max, count);
     }
 
-    @RequestMapping(method=RequestMethod.GET, value="/{spittleId}")
-    public String spittle(@PathVariable long spittleId,Model model) {
-        model.addAttribute(spittleRepository.findOne(spittleId));
+    @RequestMapping(method = RequestMethod.GET, value = "/{spittleId}")
+    public String spittle(@PathVariable long spittleId, Model model) {
+        Spittle spittle = spittleRepository.findOne(spittleId);
+        if (spittle == null) {
+            model.addAttribute("spittleId", spittleId);
+            throw new SpittleNotFoundException();
+        }
+        model.addAttribute(spittle);
         return "spittle";
+    }
+
+    @ExceptionHandler(SpittleNotFoundException.class)
+    public String handleSpittleNotFoundException() {
+        return "error/spittle_not_found";
     }
 
 }
