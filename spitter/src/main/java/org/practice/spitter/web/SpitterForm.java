@@ -92,7 +92,7 @@ public class SpitterForm {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", profilePicture=" + profilePicture +
+                ", profilePicture=" + profilePicture.getOriginalFilename() +
                 '}';
     }
 }

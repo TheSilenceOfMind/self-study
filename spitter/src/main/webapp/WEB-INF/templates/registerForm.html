@@ -12,32 +12,47 @@
 <div id="content">
     <h1 th:text="#{register.register}"></h1>
 
-    <form method="POST" th:object="${spitterForm}">
+    <form method="POST" th:object="${spitterForm}" enctype="multipart/form-data">
         <div class="errors" th:if="${#fields.hasErrors('*')}">
             <ul>
                 <li th:each="err : ${#fields.errors('*')}"
                     th:text="${err}">Input is incorrect</li>
             </ul>
         </div>
-        <label th:class="${#fields.hasErrors('firstName')}? 'error'" th:text="#{register.firstName}"></label>:
-        <input type="text" th:field="*{firstName}"
+        <label th:class="${#fields.hasErrors('firstName')}? 'error'"
+               th:text="#{register.firstName}"></label>:
+        <input type="text"
+               th:field="*{firstName}"
                th:class="${#fields.hasErrors('firstName')}? 'error'" /><br/>
 
-        <label th:class="${#fields.hasErrors('lastName')}? 'error'" th:text="#{register.lastName}"></label>:
-        <input type="text" th:field="*{lastName}"
+        <label th:class="${#fields.hasErrors('lastName')}? 'error'"
+               th:text="#{register.lastName}"></label>:
+        <input type="text"
+               th:field="*{lastName}"
                th:class="${#fields.hasErrors('lastName')}? 'error'" /><br/>
 
-        <label th:class="${#fields.hasErrors('email')}? 'error'" th:text="#{register.email}"></label>:
-        <input type="text" th:field="*{email}"
+        <label th:class="${#fields.hasErrors('email')}? 'error'"
+               th:text="#{register.email}"></label>:
+        <input type="text"
+               th:field="*{email}"
                th:class="${#fields.hasErrors('email')}? 'error'" /><br/>
 
-        <label th:class="${#fields.hasErrors('username')}? 'error'" th:text="#{register.username}"></label>:
-        <input type="text" th:field="*{username}"
+        <label th:class="${#fields.hasErrors('username')}? 'error'"
+               th:text="#{register.username}"></label>:
+        <input type="text"
+               th:field="*{username}"
                th:class="${#fields.hasErrors('username')}? 'error'" /><br/>
 
-        <label th:class="${#fields.hasErrors('password')}? 'error'" th:text="#{register.password}"></label>:
-        <input type="password" th:field="*{password}"
+        <label th:class="${#fields.hasErrors('password')}? 'error'"
+               th:text="#{register.password}"></label>:
+        <input type="password"
+               th:field="*{password}"
                th:class="${#fields.hasErrors('password')}? 'error'" /><br/>
+
+        <label th:text="#{register.profilePicture}"></label>:
+        <input type="file"
+               th:field="*{profilePicture}"
+               accept="image/jpeg,image/png,image/gif"/><br/>
 
         <input type="submit" th:value="#{register.register}" />
     </form>

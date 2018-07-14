@@ -101,7 +101,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
         resolver.setMaxUploadSizePerFile(5242880);//5MB
         resolver.setUploadTempDir(new FileSystemResource(
-                "D:\\OneDrive - ITMO UNIVERSITY\\JavaPractice\\siteData"));
+                "D:\\OneDrive - ITMO UNIVERSITY\\JavaPractice\\site_data\\tmp\\"));
         resolver.setMaxInMemorySize(0);
 
         return resolver;
