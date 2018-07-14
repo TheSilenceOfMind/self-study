@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.File;
@@ -40,8 +41,11 @@ public class SpitterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String processRegistration(@Valid SpitterForm spitterForm, Errors errors) throws IOException {
-        System.out.println(spitterForm);
+    public String processRegistration(
+            @Valid SpitterForm spitterForm,
+            Errors errors,
+            RedirectAttributes model) throws IOException {
+
         if (errors.hasErrors()) {
             return "registerForm";
         }
@@ -49,6 +53,21 @@ public class SpitterController {
         spitterRepository.save(spitter);
         MultipartFile profilePicture = spitterForm.getProfilePicture();
 
+        saveSelectedPicture(spitter, profilePicture);
+
+        model.addAttribute("username", spitter.getUsername());
+        model.addFlashAttribute("spitter", spitter);
+        return "redirect:/spitter/{username}";
+    }
+
+    /**
+     * If picture exists ({@code profilePicture.getSize() > 0}) than save in specified directory on the server.
+     *
+     * @param spitter        needed to create subfolder for user's files(images)
+     * @param profilePicture file(image) needed to save
+     * @throws IOException if problem with IO-calls exists
+     */
+    private void saveSelectedPicture(Spitter spitter, MultipartFile profilePicture) throws IOException {
         if (profilePicture.getSize() > 0) {
             String profileAvatarsDir = "D:\\OneDrive - ITMO UNIVERSITY\\JavaPractice\\site_data\\profile_avatars" +
                     "\\" + spitter.getUsername();
@@ -58,13 +77,16 @@ public class SpitterController {
             }
             profilePicture.transferTo(new File(profileAvatarsDir + "\\" + profilePicture.getOriginalFilename()));
         }
-        return "redirect:/spitter/" + spitter.getUsername();
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public String showSpitterProfile(@PathVariable String username, Model model) {
-        Spitter spitter = spitterRepository.findByUsername(username);
-        model.addAttribute(spitter);
+        if (!model.containsAttribute("spitter")) {
+            System.out.println("Looking storage! No data in flash attr of the session!");
+            Spitter spitter = spitterRepository.findByUsername(username);
+            model.addAttribute(spitter);
+        }
+
         return "profile";
     }
 }
