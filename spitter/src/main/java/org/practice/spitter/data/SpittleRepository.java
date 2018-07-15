@@ -21,4 +21,12 @@ public interface SpittleRepository {
      * @return Spittle object with given id. If no object found return null.
      */
     Spittle findOne(long id);
+
+    /**
+     * Save the Spittle to DB
+     *
+     * @param spittle given spittle to save
+     */
+    void save(Spittle spittle);
+
 }

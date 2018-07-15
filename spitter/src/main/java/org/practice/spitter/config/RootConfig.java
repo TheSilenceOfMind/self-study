@@ -16,30 +16,4 @@ import java.util.*;
         excludeFilters = {
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)
         })
-public class RootConfig {
-
-    @Bean
-    public List<Spittle> getDefaultSpittleList() {
-        List<Spittle> ret = new ArrayList<>();
-        String[] list = {"Spittes go fourth!", "second message text!", "hey, spitters!", "4-th spitter",
-                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
-                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
-                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
-                "WHAT'S GOING ON?!", "second message text!", "hey, spitters!", "4-th spitter",
-                "WHAT'S GOING ON?!"};
-        for (String s : list) {
-            ret.add(new Spittle(s, new Date()));
-        }
-        return ret;
-    }
-
-    @Bean
-    public Set<Spitter> getDefaultSpittersSet() {
-        return new HashSet<>(Arrays.asList(
-                new Spitter("Kirill", "Balad", "user0", "passwd",
-                        "user0@mail.ru"),
-                new Spitter("John", "Johnson", "user1", "passwd",
-                        "user1@mail.ru")
-        ));
-    }
-}
+public class RootConfig { }
