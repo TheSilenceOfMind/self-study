@@ -111,10 +111,6 @@ public class Spitter {
 
         return new EqualsBuilder()
                 .append(username, anotherSpitter.username)
-                .append(password, anotherSpitter.password)
-                .append(firstName, anotherSpitter.firstName)
-                .append(lastName, anotherSpitter.lastName)
-                .append(email, anotherSpitter.email)
                 .isEquals();
     }
 
@@ -122,10 +118,6 @@ public class Spitter {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(username)
-                .append(password)
-                .append(firstName)
-                .append(lastName)
-                .append(email)
                 .toHashCode();
     }
 
