@@ -41,7 +41,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public MessageSource messageSource() {
 //        Locale.setDefault(new Locale("ru")); // to test russian property localisation
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-        source.setBasenames("registrationValidationMessages", "messages");
+        source.setBasenames("validationMessages", "messages");
         return source;
     }
 

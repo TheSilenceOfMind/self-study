@@ -2,10 +2,16 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<div th:fragment="header">
+<div th:fragment="header" id="header">
+    <div class="header-left">
+        <a th:href="@{/spittles/spit}" th:text="#{home.spit}" class="header-text"></a>
+    </div>
     <a th:href="@{/}">
         <img th:src="@{/resources/images/spitter_logo.png}" class="logo"/>
     </a>
+    <div class="header-right">
+        <a th:href="@{/spitter/register}" th:text="#{home.register}" class="header-text"></a>
+    </div>
 </div>
 
 <div>There's might be your content.</div>

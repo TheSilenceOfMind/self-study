@@ -41,7 +41,7 @@ public class SpitterControllerTests {
                 .param("lastName", "Garrison")
                 .param("username", "jacky")
                 .param("password", "qwerty")
-                .param("email", "jacky@mail.ru"))
+                .param("spitter.email", "jacky@mail.ru"))
                 .andExpect(redirectedUrl("/spitter/jacky"));
 
         verify(mockRepository, atLeastOnce()).save(unsaved);

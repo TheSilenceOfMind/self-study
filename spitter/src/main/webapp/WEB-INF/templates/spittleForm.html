@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{common.title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/style.css}"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<div id="header" th:include="page :: header"></div>
+
+<div id="content">
+    <h1 th:text="#{spittleForm.message}"></h1>
+    <form method="POST" th:object="${spittleForm}" id="spitForm">
+        <div class="errors" th:if="${#fields.hasErrors('*')}">
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}"
+                    th:text="${err}">Input is incorrect</li>
+            </ul>
+        </div>
+        <textarea form="spitForm"
+                  th:field="*{message}"
+                  th:class="${#fields.hasErrors('message')} ? 'error'"
+                  rows="20" cols="80"></textarea><br/>
+        <input type="submit" th:value="#{spittleForm.submit}"/>
+    </form>
+</div>
+
+<div id="footer" th:include="page :: copy" class="footer"></div>
+
+</body>
+</html>

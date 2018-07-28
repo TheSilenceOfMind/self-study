@@ -6,9 +6,12 @@ import org.practice.spitter.web.exception.SpittleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -40,5 +43,20 @@ public class SpittleController {
         }
         model.addAttribute(spittle);
         return "spittle";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/spit")
+    public String spit(Model model) {
+        model.addAttribute(new SpittleForm());
+        return "spittleForm";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/spit")
+    public String processSpitting(@Valid SpittleForm spittleForm, Errors errors) {
+        if (errors.hasErrors())
+            return "spittleForm";
+        Spittle spittle = spittleForm.toSpittle();
+        spittleRepository.save(spittle);
+        return "redirect:/spittles";
     }
 }

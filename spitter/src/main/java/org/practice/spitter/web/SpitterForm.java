@@ -10,24 +10,24 @@ import org.springframework.web.multipart.MultipartFile;
 public class SpitterForm {
 
     @NotNull
-    @Size(min = 5, max = 16, message = "{username.size}")
+    @Size(min = 5, max = 16, message = "{spitter.username.size}")
     private String username;
 
     @NotNull
-    @Size(min = 5, max = 25, message = "{password.size}")
+    @Size(min = 5, max = 25, message = "{spitter.password.size}")
     private String password;
 
     @NotNull
-    @Size(min = 2, max = 30, message = "{firstName.size}")
+    @Size(min = 2, max = 30, message = "{spitter.firstName.size}")
     private String firstName;
 
     @NotNull
-    @Size(min = 2, max = 30, message = "{lastName.size}")
+    @Size(min = 2, max = 30, message = "{spitter.lastName.size}")
     private String lastName;
 
     @NotNull
     @SuppressWarnings("deprecation")
-    @Email(message="{email}")
+    @Email(message="{spitter.email}")
     private String email;
 
     private MultipartFile profilePicture;

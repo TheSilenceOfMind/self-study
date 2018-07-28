@@ -1,3 +1,4 @@
+<!-- removed from production. Used spittles page instead of this. -->
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
@@ -12,8 +13,7 @@
 
 <div id="content">
     <h1 th:text="#{home.welcome}"></h1>
-    <a th:href="@{/spittles}" th:text="#{home.all}"></a> |
-    <a th:href="@{/spitter/register}" th:text="#{home.register}"></a>
+    <a th:href="@{/spittles}" th:text="#{home.all}"></a>
 </div>
 
 <div id="footer" th:include="page :: copy" class="footer"></div>
