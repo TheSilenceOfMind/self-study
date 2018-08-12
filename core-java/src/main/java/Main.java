@@ -1,25 +1,13 @@
-import exceptions.MyException;
-import exceptions.writer.SimpleFileWriter;
-import exceptions.writer.TryWithResourcesFileWriter;
-
-import java.util.Arrays;
-
+/**
+ * used as tmp class for in-time non-related to topic work
+ */
 public class Main {
 
     public static void main(String[] args) {
-        try {
-            TryWithResourcesFileWriter writer = new TryWithResourcesFileWriter();
-            writer.setList(Arrays.asList(999, 666, 1418));
-            writer.printList();
-        } catch (MyException e) {
-            
-            StackTraceElement[] stackTraceElement = e.getStackTrace();
-            for (StackTraceElement i : stackTraceElement) {
-                System.err.println(
-                        i.getFileName() + ": " + i.getLineNumber()
-                        + " line >>> " + i.getMethodName() + "()");
-            }
-        }
+        Boolean b = new Boolean("true");
+        System.out.println(b);
 
+        assert b;
+        System.out.println("wow");
     }
 }
