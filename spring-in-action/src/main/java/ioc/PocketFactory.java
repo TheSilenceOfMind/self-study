@@ -2,8 +2,8 @@ package ioc;
 
 import java.util.Random;
 
-class PocketFactory {
-    Pocket producePocket() {
-        return new Pocket(new Random().nextInt(1000));
+public class PocketFactory {
+    public PocketSubclass producePocket() {
+        return new PocketSubclass(1000);
     }
 }

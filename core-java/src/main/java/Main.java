@@ -1,13 +1,13 @@
-/**
- * used as tmp class for in-time non-related to topic work
- */
+import java.util.*;
+
 public class Main {
-
     public static void main(String[] args) {
-        Boolean b = new Boolean("true");
-        System.out.println(b);
-
-        assert b;
-        System.out.println("wow");
+        f(getMap());
     }
+
+    private static <K, V> Map<K, V> getMap() {
+        return new HashMap<K, V>();
+    }
+
+    static void f(Map<String, List<? extends String>> petPeople) {}
 }

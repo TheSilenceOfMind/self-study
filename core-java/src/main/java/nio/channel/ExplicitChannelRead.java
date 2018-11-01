@@ -1,4 +1,4 @@
-package nio;
+package nio.channel;
 
 import java.nio.*;
 import java.io.*;
@@ -6,10 +6,13 @@ import java.nio.channels.*;
 import java.nio.file.*;
 
 public class ExplicitChannelRead {
+
+    private static final String FILEPATH_STRING = "src/main/java/nio/channel/test.txt";
+
     public static void main(String[] args) {
         int count;
 
-        try ( SeekableByteChannel fChannel = Files.newByteChannel(Paths.get("src/main/java/nio/test.txt"))) {
+        try ( SeekableByteChannel fChannel = Files.newByteChannel(Paths.get(FILEPATH_STRING))) {
             ByteBuffer mBuf = ByteBuffer.allocate(128);
             do {
                 count = fChannel.read(mBuf);

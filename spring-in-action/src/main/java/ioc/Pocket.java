@@ -3,10 +3,14 @@ package ioc;
 import java.math.BigDecimal;
 
 class Pocket {
-    private int money;
+    protected int money;
 
     Pocket(int money) {
         this.money = money;
+    }
+
+    protected void print() {
+        System.out.println("parent print()");
     }
 
     public String toString() {
