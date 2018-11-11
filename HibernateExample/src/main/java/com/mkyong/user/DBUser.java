@@ -25,6 +25,12 @@ public class DBUser implements java.io.Serializable {
         this.createdDate = createdDate;
     }
 
+    public DBUser(String username, String createdBy, Date createdDate) {
+        this.username = username;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+    }
+
     @Id
     @Column(name = "USER_ID", unique = true, nullable = false, precision = 5)
     @GenericGenerator(name = "gen", strategy = "increment")
@@ -65,4 +71,13 @@ public class DBUser implements java.io.Serializable {
         this.createdDate = createdDate;
     }
 
+    @Override
+    public String toString() {
+        return "DBUser{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", createdBy='" + createdBy + '\'' +
+                ", createdDate=" + createdDate +
+                '}';
+    }
 }
