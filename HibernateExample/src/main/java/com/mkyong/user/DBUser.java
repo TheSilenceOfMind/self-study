@@ -1,5 +1,7 @@
 package com.mkyong.user;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -24,7 +26,9 @@ public class DBUser implements java.io.Serializable {
     }
 
     @Id
-    @Column(name = "USER_ID", unique = true, nullable = false, precision = 5, scale = 0)
+    @Column(name = "USER_ID", unique = true, nullable = false, precision = 5)
+    @GenericGenerator(name = "gen", strategy = "increment")
+    @GeneratedValue(generator = "gen")
     public int getUserId() {
         return this.userId;
     }
