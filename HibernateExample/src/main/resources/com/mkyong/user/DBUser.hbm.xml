@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.mkyong.user.DBUser" table="DBUser">
+        <meta attribute="class-description">
+            This class contains DB user details
+        </meta>
+
+        <id name="userId" type="int">
+            <column name="USER_ID" precision="5"/>
+            <generator class="increment"/>
+        </id>
+
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="20" not-null="true"/>
+        </property>
+        <property name="createdBy" type="java.lang.String">
+            <column name="CREATED_BY" length="20" not-null="true"/>
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="CREATED_DATE" length="7" not-null="true"/>
+        </property>
+
+    </class>
+</hibernate-mapping>
