@@ -7,7 +7,7 @@
         <spring-test.version>4.3.7.RELEASE</spring-test.version>
         <spring-jdbc.version>4.3.17.RELEASE</spring-jdbc.version>
         <spring-aspects.version>4.3.10.RELEASE</spring-aspects.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <junit.systemrule>1.16.1</junit.systemrule>
         <dbh2.version>1.4.187</dbh2.version>
     </properties>
